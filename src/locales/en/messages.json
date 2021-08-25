@@ -1,0 +1,14 @@
+{
+    "login_view_meta_title": "Login",
+    "login_view_meta_description": "Manage and catalog home and small libraries online. Simple, quick, easy.",
+    "login_form_title": "Login",
+    "login_form_field_mail_placeholder": "Your email address",
+    "login_form_field_password_placeholder": "Your password",
+    "login_form_main_cta": "Log in",
+    "login_form_forgot_password_cta": "Forgot your password?",
+
+    "page_not_found_meta_title": "Page not found",
+    "page_not_found_title": "Page not found",
+    "page_not_found_desc": "That page doesn't exist or is unavailable.",
+    "page_not_found_main_cta": "Go back to Home"
+}

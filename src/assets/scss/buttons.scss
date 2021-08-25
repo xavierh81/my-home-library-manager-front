@@ -1,0 +1,51 @@
+.roundedButton {
+    position:relative;
+    background-color: $blueColor;
+    border: none;
+    color: white;
+    padding: 13px 50px;
+    min-width: 250px;
+    font-weight:600;
+    letter-spacing:0.5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    -webkit-box-shadow: 0 10px 30px 0 $blueColor_shadow;
+    box-shadow: 0 10px 30px 0 $blueColor_shadow;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 5px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    cursor:pointer;
+
+    &:hover {
+        background-color: $blueColor_hover;
+    }
+
+    &:active {
+        -moz-transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        -o-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        transform: scale(0.95);
+    }
+
+    &.disabled {
+        opacity:0.6;
+        cursor: not-allowed;
+        
+        &:active {
+            pointer-events:none;
+        }
+    }
+
+    .ant-spin {
+        position: absolute;
+        left: 15px;
+    }
+}

@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", "Arial";
+    font-weight: $regularFontWeight;
+    color: $mainFontColor;
+}
+
+a {
+    color: $blueColor;
+
+    &:hover {
+        color: $blueColor_hover;
+    }
+}

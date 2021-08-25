@@ -1,0 +1,67 @@
+/* Declare fonts variables */
+$thinFontWeight: 100;
+$lightFontWeight: 300;
+$regularFontWeight: 400;
+$boldFontWeight: 600;
+$blackFontWeight: 800;
+
+/* Import fonts */
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: $thinFontWeight;
+    src: url('../fonts/Lato/Lato-Thin.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: $thinFontWeight;
+    src: url('../fonts/Lato/Lato-ThinItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: $lightFontWeight;
+    src: url('../fonts/Lato/Lato-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: $lightFontWeight;
+    src: url('../fonts/Lato/Lato-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: $regularFontWeight;
+    src: url('../fonts/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: $boldFontWeight;
+    src: url('../fonts/Lato/Lato-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: $boldFontWeight;
+    src: url('../fonts/Lato/Lato-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: $blackFontWeight;
+    src: url('../fonts/Lato/Lato-Black.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: $blackFontWeight;
+    src: url('../fonts/Lato/Lato-BlackItalic.ttf') format('truetype');
+}
