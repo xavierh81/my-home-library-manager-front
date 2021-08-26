@@ -44,6 +44,10 @@
             padding:0 !important;
         }
 
+        &.registerForm {
+            margin-top:80px;
+        }
+
         .formContent {
             padding: 35px 40px;
 
@@ -107,6 +111,15 @@
             .forgotPassword {
                 margin-top: 25px;
                 display: inline-block;
+            }
+
+            .formError {
+                color: $redColor;
+                font-size:14px;
+                font-weight:600;
+                display:block;
+                margin:25px 0 0;
+                text-align:center;
             }
         }
 

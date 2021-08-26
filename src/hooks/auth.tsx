@@ -2,6 +2,9 @@
 // Imports
 import React from 'react';
 
+// Helpers
+import { getAccessToken } from 'helpers/auth'
+
 //
 // Define the Context
 //
@@ -45,7 +48,7 @@ export interface UseAuth {
 export function useAuth(): UseAuth {
 
 	function isAuthenticated() {
-		return false
+		return getAccessToken() !== null ? true : false
 	}
 
 	return {

@@ -24,7 +24,7 @@ import {USER_NOT_ALLOWED_ERROR_CODE} from 'graphql/errors/codes'
 
 // Configuration
 var env       = process.env.SERVER_ENV || "local";
-var config    = require('config/config')[env];
+const config    = require('config/config').default[env];
 
 //
 // Core part
@@ -44,7 +44,7 @@ function create(initialState: any) {
     // Custom handling of errors
     // Note: In this part, we will add the automatic refresh of accessToken
     const errorLink = onError(({ graphQLErrors, operation, forward }) => {
-        
+
         // Log graphQLErrors if enabled
         if(config.logging.graphQLErrors) 
             console.log(graphQLErrors);
@@ -76,7 +76,6 @@ function create(initialState: any) {
                 client.mutate({
                     mutation: MUTATION_REFRESH_ACCESS_TOKEN
                 }).then(({ data }) => {
-                
                     let accessToken = data[MUTATION_REFRESH_ACCESS_TOKEN_KEY].accessToken
                     setAccessToken(accessToken)
 
@@ -96,7 +95,10 @@ function create(initialState: any) {
                 }).catch(e => {
                     // If the refresh of the access token fails, then we force a signOut
                     signOut().then(() => {
-                        
+                        // Redirect to home if possible
+                        if(window !== undefined) {
+                            window.location.href = "/";
+                        }
                     })
                 })
             })
@@ -108,15 +110,20 @@ function create(initialState: any) {
     });
 
     const uploadLink = createUploadLink({
-        uri: process.env.API_URL, // Server URL (must be absolute)
+        uri: config.graphqlApiEndpoint, // Server URL (must be absolute)
         credentials: 'include' // Additional fetch() options like `credentials` or `headers`
     })
 
     const authorizationLink = setContext((request, previousContext) => {
         let token = getAccessToken()
-        return {
-            headers: {Authorization: `Bearer ${token}`}
+        if(token != null)
+        {
+            return {
+                headers: {Authorization: `Bearer ${token}`}
+            }
         }
+
+        return {}
     });
 
     const link = ApolloLink.from([errorLink, authorizationLink, cloneLink, uploadLink])

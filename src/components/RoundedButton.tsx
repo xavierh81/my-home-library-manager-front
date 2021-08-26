@@ -5,11 +5,11 @@ import { LoadingOutlined } from '@ant-design/icons';
 
 // Define props type
 type RoundedButtonProps = {
-    text: String,
+    text: string,
     onClick: Function
-    enabled?: Boolean,
-    loading?: Boolean,
-    className?: String
+    enabled?: boolean,
+    loading?: boolean,
+    className?: string
 }
 
 // Define component
