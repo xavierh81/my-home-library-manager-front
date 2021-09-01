@@ -15,6 +15,9 @@ import {registerMutation} from 'graphql/api'
 import { signIn } from 'helpers/auth';
 import { useApolloClient } from '@apollo/client';
 
+// Config
+import { Routes } from 'config/constants';
+
 //
 // Core
 //
@@ -55,7 +58,7 @@ function Register() {
                     signIn(loginResult.id, loginResult.accessToken).then(() => {
                         console.log("Signup done => Redirect to main dashboard")
                         // Redirect to home
-                        history.push("/")
+                        history.push(Routes.HOME)
                     })
                 })
                 .catch((error) => {
@@ -118,7 +121,7 @@ function Register() {
                     </Form>
                 </div>
                 <div className="formFooter">
-                    <span>{t`register_form_already_have_account`}&nbsp;&nbsp;<a href="/login">{t`register_form_already_have_account_link`}</a></span>
+                    <span>{t`register_form_already_have_account`}&nbsp;&nbsp;<a href={Routes.LOGIN}>{t`register_form_already_have_account_link`}</a></span>
                 </div>
             </div>
         </div>

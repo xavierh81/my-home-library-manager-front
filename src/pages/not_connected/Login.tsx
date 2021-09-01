@@ -15,6 +15,9 @@ import {loginMutation} from 'graphql/api'
 import { signIn } from 'helpers/auth';
 import { useApolloClient } from '@apollo/client';
 
+// Config
+import { Routes } from 'config/constants';
+
 //
 // Core
 //
@@ -55,7 +58,7 @@ function Login() {
                     signIn(loginResult.id, loginResult.accessToken).then(() => {
                         console.log("Signin done => Redirect to main dashboard")
                         // Redirect to home
-                        history.push("/")
+                        history.push(Routes.HOME)
                     })
                 })
                 .catch((error) => {
@@ -103,11 +106,11 @@ function Login() {
 
                         {state.formError != null && <span className="formError">{state.formError}</span>}
                         
-                        <a className="forgotPassword" href="/forgot-password">{t`login_form_forgot_password_cta`}</a> 
+                        <a className="forgotPassword" href={Routes.FORGOT_PASSWORD}>{t`login_form_forgot_password_cta`}</a> 
                     </Form>
                 </div>
                 <div className="formFooter">
-                    <span>{t`login_form_no_account`}&nbsp;&nbsp;<a href="/signup">{t`login_form_no_account_link`}</a></span>
+                    <span>{t`login_form_no_account`}&nbsp;&nbsp;<a href={Routes.SIGNUP}>{t`login_form_no_account_link`}</a></span>
                 </div>
             </div>
         </div>

@@ -15,16 +15,20 @@ import PageNotFound from 'pages/errors/PageNotFound';
 // Import style 
 import 'assets/scss/main.style.scss'
 
+// Config
+import { Routes } from 'config/constants';
+
+// Main render
 function App() {
   return (
       <Router>
         <div>
           <Switch>
             
-            <PageRoute path="/" exact component={ Home } authenticated={true} />
+            <PageRoute path={Routes.HOME} exact component={ Home } title={t`my_libraries_view_title`} authenticated={true} />
 
-            <PageRoute path="/login" exact component={ Login } title={t`login_view_meta_title`} />
-            <PageRoute path="/signup" exact component={ Register } title={t`login_view_meta_title`} />
+            <PageRoute path={Routes.LOGIN} exact component={ Login } title={t`login_view_meta_title`} />
+            <PageRoute path={Routes.SIGNUP} exact component={ Register } title={t`register_view_meta_title`} />
 
             <PageRoute path="*" component={PageNotFound} title={t`page_not_found_meta_title`}/>
              

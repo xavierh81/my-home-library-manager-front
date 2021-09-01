@@ -4,6 +4,7 @@ body {
     font-family: "Lato", "Arial";
     font-weight: $regularFontWeight;
     color: $mainFontColor;
+    background-color: $mainBackgroundColor;
 }
 
 a {
@@ -11,5 +12,95 @@ a {
 
     &:hover {
         color: $blueColor_hover;
+    }
+}
+
+/* Customize menu */
+.ant-layout-sider {
+    background-color: $menuBackgroundColor;
+
+    .ant-menu.ant-menu-dark {
+        background-color: $menuBackgroundColor;
+    }
+
+    .ant-menu-sub {
+        background-color: $menuBackgroundDarkerColor !important
+    }
+
+    li.ant-menu-item, li.ant-menu-submenu {
+
+        margin-bottom:0px !important;
+        margin-top:0px !important;
+        padding-top:4px;
+        padding-bottom:4px;
+
+        font-weight: $lightFontWeight;
+
+        &.ant-menu-item-selected {
+            margin-bottom:3px !important;
+            margin-top:3px !important;
+            background-color: $mainColors_1 !important;
+            font-weight:$regularFontWeight;
+        }
+    }
+
+    .ant-menu > .ant-menu-item-divider {
+        margin:3px 0;
+        background-color: $menuSeparatorColor;
+    }
+
+    .menuHeader {
+        padding: 12px 20px 12px 15px;
+        background: $mainColors_3;
+        background: linear-gradient(90deg, $mainColors_3 0%, $mainColors_4 100%);
+        border-bottom:1px solid $menuSeparatorColor;
+        display:flex;
+        flex-direction: row;
+
+        span {
+            color:#FFF;
+            font-weight:300;
+            font-size:20px;
+            letter-spacing:1px;
+            flex:1;
+        }
+        
+        .icon {
+            flex-grow:0;
+            align-self: flex-end;
+            color:#FFF;
+            font-size:20px;
+        }
+    }
+
+    .menuUserHeader {
+        padding: 15px 5px;
+        position: relative;
+        border-bottom:1px solid $menuSeparatorColor;
+
+        div.avatar {
+            width:30px;
+            height:30px;
+            border-radius:15px;
+            background-color:#FFF;
+            position:absolute;
+            top:10px;
+            left:10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+            overflow:hidden;
+
+            img {
+                width:100%;
+                height:100%;
+            }
+        }
+
+        span {
+            color:#FFF;
+            padding-left:45px;
+            display: block;
+            letter-spacing:0.5px;
+            font-weight: $lightFontWeight;
+        }
     }
 }

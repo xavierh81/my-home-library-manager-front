@@ -22,5 +22,13 @@
     "page_not_found_meta_title": "Page not found",
     "page_not_found_title": "Page not found",
     "page_not_found_desc": "That page doesn't exist or is unavailable.",
-    "page_not_found_main_cta": "Go back to Home"
+    "page_not_found_main_cta": "Go back to Home",
+
+    "menu_logout_action": "Logout",
+
+    "my_libraries_view_title": "My Libraries",
+
+    "add_media_view_title": "New entry",
+
+    "settings_view_title": "Settings"
 }

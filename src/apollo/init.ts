@@ -23,8 +23,11 @@ from 'graphql/mutations'
 import {USER_NOT_ALLOWED_ERROR_CODE} from 'graphql/errors/codes'
 
 // Configuration
+import { Routes } from 'config/constants';
+
 var env       = process.env.SERVER_ENV || "local";
 const config    = require('config/config').default[env];
+
 
 //
 // Core part
@@ -95,9 +98,9 @@ function create(initialState: any) {
                 }).catch(e => {
                     // If the refresh of the access token fails, then we force a signOut
                     signOut().then(() => {
-                        // Redirect to home if possible
+                        // Redirect to login if possible
                         if(window !== undefined) {
-                            window.location.href = "/";
+                            window.location.href = Routes.LOGIN;
                         }
                     })
                 })
