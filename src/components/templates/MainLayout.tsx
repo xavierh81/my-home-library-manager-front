@@ -101,7 +101,7 @@ const MainLayout : React.FunctionComponent<MainLayoutProps> = ({children}) => {
           <Menu.Divider />
           <Menu.Item key="settings" className="withTopSeparator" icon={<FontAwesomeIcon icon={faSlidersH} />} onClick={() => history.push(Routes.SETTINGS)}>{t`settings_view_title`}</Menu.Item>
           <Menu.Divider />
-          <Menu.Item className="withTopSeparator" icon={<FontAwesomeIcon icon={faSignOutAlt} />} onClick={onLogoutClick}>{t`menu_logout_action`}</Menu.Item>
+          <Menu.Item key="logout" className="withTopSeparator" icon={<FontAwesomeIcon icon={faSignOutAlt} />} onClick={onLogoutClick}>{t`menu_logout_action`}</Menu.Item>
         </Menu>
       </Layout.Sider>
       <Layout className="site-layout">

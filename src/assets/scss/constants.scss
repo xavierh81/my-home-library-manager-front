@@ -1,3 +1,8 @@
+/* Constants */
+$mobileResponsiveWidth: 768px;
+$defaultOpacityForShadow: 0.3;
+$defaultHoverDarkenRatio: 10%;
+
 /* Colors */
 $mainFontColor: #333;
 $mainBackgroundColor: #f6f6f6;
@@ -8,19 +13,13 @@ $mainColors_2: #3E2C41;
 $mainColors_3: #5C527F;
 $mainColors_4: #6E85B2;
 
-$mainColor: $mainColors_2;
+$mainColor: $mainColors_3;
+
+$redColor: #ED5656;
 
 $blueColor: #56baed;
-$blueColor_hover: #39ace7;
-$blueColor_shadow: rgba(95,186,233,0.4);
 
-$redColor: rgba(237, 86, 86, 1);
-$redColor_hover: rgba(217, 72, 72, 1);
-$redColor_shadow: rgba(237, 86, 86, 0.45);
+$grey_borderColor: #E4E4E4;
 
 $menuBackgroundColor: #404040;
-$menuBackgroundDarkerColor: #303030;
 $menuSeparatorColor: #323232;
-
-/* Others */
-$mobileResponsiveWidth: 768px;

@@ -11,7 +11,7 @@ a {
     color: $blueColor;
 
     &:hover {
-        color: $blueColor_hover;
+        color: darken($blueColor, $defaultHoverDarkenRatio);
     }
 }
 
@@ -24,7 +24,7 @@ a {
     }
 
     .ant-menu-sub {
-        background-color: $menuBackgroundDarkerColor !important
+        background-color: darken($menuBackgroundColor, $defaultHoverDarkenRatio) !important
     }
 
     li.ant-menu-item, li.ant-menu-submenu {
@@ -102,5 +102,72 @@ a {
             letter-spacing:0.5px;
             font-weight: $lightFontWeight;
         }
+    }
+}
+
+/* Custom Template : Settings */
+.settingsLayout {
+    margin:20px 20px;
+    border: 1px solid $grey_borderColor;
+    border-radius: 3px;
+    background-color:#FFF;
+    padding:20px 30px;
+
+    .header {
+        margin-bottom:20px;
+        padding-bottom:20px;
+        border-bottom: 1px solid $grey_borderColor;
+        position:relative;
+
+        .title {
+            font-weight:600;
+            font-size:32px;
+            letter-spacing: 0.5px;
+            color:$mainColor;
+
+            &.withIcon {
+                padding-left:50px;
+            }
+        }
+
+        .icon {
+            position: absolute;
+            left:0;
+            font-size:28px;
+            top:4px;
+            color:$mainColor;
+        }
+    }
+}
+
+/*
+    Customization of form
+*/
+.ant-form-item-has-error :not(.ant-input-disabled):not(.ant-input-borderless).ant-input, .ant-form-item-has-error :not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper, .ant-form-item-has-error :not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover, .ant-form-item-has-error :not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
+    border-color: $redColor
+}
+
+.ant-form-item-has-error .ant-input-prefix {
+    color: $redColor;
+}
+
+.siteForm {
+    .ant-input-prefix {
+        margin-right: 8px;
+    }
+
+    .formError {
+        color: $redColor;
+        font-size:14px;
+        font-weight:600;
+        display:block;
+        margin:25px 0 0;
+        text-align:justify;
+    }
+}
+
+.ant-notification {
+    .ant-notification-notice-message {
+        font-weight:600
     }
 }

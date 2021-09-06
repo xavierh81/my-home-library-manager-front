@@ -60,7 +60,7 @@
             }
 
             .submitButton {
-                margin-top:20px;
+                margin-top:20px 20px 5px 20px;      
             }
 
             .ant-input-affix-wrapper {
@@ -100,7 +100,7 @@
 
             .ant-form-item-has-error {
                 .ant-input-affix-wrapper {
-                    box-shadow:0 0 0 2px $redColor_shadow;
+                    box-shadow:0 0 0 2px rgba($redColor, $defaultOpacityForShadow);
                 }
 
                 .ant-input-prefix {

@@ -1,6 +1,6 @@
 .roundedButton {
     position:relative;
-    background-color: $blueColor;
+    background-color: $mainColor;
     border: none;
     color: white;
     padding: 13px 50px;
@@ -11,11 +11,11 @@
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
-    -webkit-box-shadow: 0 10px 30px 0 $blueColor_shadow;
-    box-shadow: 0 10px 30px 0 $blueColor_shadow;
+    -webkit-box-shadow: 0 10px 30px 0 rgba($mainColor, $defaultOpacityForShadow);
+    box-shadow: 0 10px 30px 0 rgba($mainColor, $defaultOpacityForShadow);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 5px 20px;
+    margin: 5px 0px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -24,7 +24,7 @@
     cursor:pointer;
 
     &:hover {
-        background-color: $blueColor_hover;
+        background-color: darken($mainColor, $defaultHoverDarkenRatio);
     }
 
     &:active {

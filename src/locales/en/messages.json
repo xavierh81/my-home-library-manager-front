@@ -3,6 +3,7 @@
     "global_form_field_lastname_placeholder": "Your last name",
     "global_form_field_mail_placeholder": "Your email address",
     "global_form_field_password_placeholder": "Your password",
+    "global_form_save_cta": "Save changes",
     
     "login_view_meta_title": "Login",
     "login_view_meta_description": "Manage and catalog home and small libraries online. Simple, quick, easy.",
@@ -30,5 +31,8 @@
 
     "add_media_view_title": "New entry",
 
-    "settings_view_title": "Settings"
+    "settings_view_title": "Settings",
+    "settings_view_profile_update_title": "Edit Profile",
+    "settings_view_update_success_title": "Profile updated",
+    "settings_view_update_success_desc": "Your profile has been successfully updated."
 }

@@ -3,6 +3,7 @@ import { ApolloClient, ApolloError, DocumentNode } from '@apollo/client'
 import {
     MUTATION_LOGIN, MUTATION_LOGIN_KEY,
     MUTATION_REGISTER, MUTATION_REGISTER_KEY,
+    MUTATION_UPDATE_USER, MUTATION_UPDATE_USER_KEY
 } from './mutations'
 
 import {
@@ -90,4 +91,13 @@ export function registerMutation(client: ApolloClient<any>, firstName: string, l
         password
     }
     return executeMutation(client, MUTATION_REGISTER, MUTATION_REGISTER_KEY, variables)
+}
+
+export function updateUser(client: ApolloClient<any>, firstName: string, lastName: string, mail: string) : Promise<any> {
+    let variables = {
+        firstName,
+        lastName,
+        mail,
+    }
+    return executeMutation(client, MUTATION_UPDATE_USER, MUTATION_UPDATE_USER_KEY, variables)
 }

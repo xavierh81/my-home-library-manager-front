@@ -1,6 +1,6 @@
 // Imports
 import { t } from "@lingui/macro";
-import {RouteComponentProps} from 'react-router-dom';
+import {RouteComponentProps, useHistory} from 'react-router-dom';
 
 // Components
 import { RoundedButton } from "components/RoundedButton";
@@ -9,7 +9,10 @@ import { RoundedButton } from "components/RoundedButton";
 // Core
 //
 
-const PageNotFound : React.FunctionComponent<RouteComponentProps> = ({history}) => {
+function PageNotFound() {
+
+    // Load needed hooks
+    const history = useHistory();
 
     // Function to redirect user to homePage
     const GoBackToHome = () => {

@@ -52,3 +52,23 @@ export const MUTATION_REGISTER = gql`
         }
     }
 `;
+
+// Update user account
+export const MUTATION_UPDATE_USER_KEY = 'updateUser'
+export const MUTATION_UPDATE_USER = gql`
+    mutation updateUser(
+        $firstName: String!,
+        $lastName: String!,
+        $mail: String!
+    ) 
+    {
+        updateUser(
+            firstName: $firstName,
+            lastName: $lastName,
+            mail: $mail
+        ) 
+        {
+            id
+        }
+    }
+`;
