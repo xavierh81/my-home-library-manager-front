@@ -1,6 +1,6 @@
 // Imports
 import { t } from "@lingui/macro";
-import {RouteComponentProps, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 // Components
 import { RoundedButton } from "components/RoundedButton";

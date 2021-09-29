@@ -12,3 +12,17 @@ export const QUERY_GET_USER = gql`
     }
     ${fragments.user}
 `;
+
+// Search media
+export const QUERY_SEARCH_MEDIAS_KEY = 'searchMedias'
+export const QUERY_SEARCH_MEDIAS = gql`
+    query searchMedias(
+        $text: String!,
+        $mediaType: MediaType!
+    ) {
+        searchMedias(text: $text, mediaType: $mediaType) {
+            ...SearchMediaResult
+        }
+    }
+    ${fragments.searchMediaResult}
+`;

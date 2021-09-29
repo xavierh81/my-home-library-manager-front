@@ -49,3 +49,13 @@
         left: 15px;
     }
 }
+
+.ant-btn-primary {
+    border-color: $mainColor;
+    background-color: $mainColor;
+
+    &:hover, &:focus {
+        background-color: darken($mainColor, $defaultHoverDarkenRatio) !important;
+        border-color: darken($mainColor, $defaultHoverDarkenRatio) !important;
+    }
+}

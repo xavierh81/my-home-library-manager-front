@@ -1,10 +1,8 @@
 // Imports
-import React, { useEffect } from 'react';
-import { t } from "@lingui/macro"
-import { ApolloError, useApolloClient } from '@apollo/client';
+import React from 'react';
 
 // Apollo / GraphQL
-import {getUser} from 'graphql/api'
+
 
 // Components
 import MainLayout from 'components/templates/MainLayout';

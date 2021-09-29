@@ -14,6 +14,18 @@ fragments.user = gql`
     }
 `
 
+// Define fragment for media result
+fragments.searchMediaResult =  gql`
+    fragment SearchMediaResult on SearchMediaResultType {
+        id
+        title
+        originalTitle
+        summary
+        imageUrl
+        releaseDate
+    }
+`
+
 
 // Export
 export default fragments

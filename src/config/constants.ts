@@ -7,3 +7,8 @@ export const Routes = {
     FORGOT_PASSWORD: "/forgot-password",
     SIGNUP: "/signup"
 }
+
+export const media_types = {
+    MOVIE: 1,
+    BOOK: 2
+}

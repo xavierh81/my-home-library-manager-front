@@ -6,6 +6,7 @@ import App from './App';
 // Import i18n
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
+import { en } from "make-plural/plurals"
 import messages from 'locales/en/messages.json'
 
 // Import Apollo
@@ -16,6 +17,7 @@ import initApollo from 'apollo/init'
 import {AuthProvider} from 'hooks/auth'
 
 // Configure i18n
+i18n.loadLocaleData('en', { plurals: en})
 i18n.load('en', messages)
 i18n.activate('en')
 

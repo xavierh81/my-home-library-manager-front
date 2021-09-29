@@ -7,8 +7,15 @@ import {
 } from './mutations'
 
 import {
-    QUERY_GET_USER, QUERY_GET_USER_KEY
+    QUERY_GET_USER, QUERY_GET_USER_KEY, 
+    QUERY_SEARCH_MEDIAS, QUERY_SEARCH_MEDIAS_KEY
 } from './queries'
+
+// Constants
+import { media_types } from 'config/constants'
+
+// Helpers
+import { getEnumKeyByValue } from 'helpers/string'
 
 //
 // Queries
@@ -29,6 +36,7 @@ function executeQuery(client: ApolloClient<any>, query: DocumentNode, mutationKe
                 }
 
                 let r = result.data[mutationKey]
+
                 resolve(r)
 
             }).catch((e: ApolloError) => {
@@ -45,6 +53,15 @@ export function getUser(client: ApolloClient<any>) : Promise<any> {
     let variables = { }
     return executeQuery(client, QUERY_GET_USER, QUERY_GET_USER_KEY, variables)
 }
+
+export function searchMedias(client: ApolloClient<any>, searchText: string, mediaType: number) : Promise<any> {
+    let variables = { 
+        text: searchText,
+        mediaType: getEnumKeyByValue(media_types, mediaType)
+    }
+    return executeQuery(client, QUERY_SEARCH_MEDIAS, QUERY_SEARCH_MEDIAS_KEY, variables)
+}
+
 
 //
 // Mutations
