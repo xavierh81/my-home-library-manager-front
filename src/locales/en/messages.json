@@ -4,6 +4,8 @@
     "global_form_field_mail_placeholder": "Your email address",
     "global_form_field_password_placeholder": "Your password",
     "global_form_save_cta": "Save changes",
+
+    "global_error_notification_title": "Oops!",
     
     "login_view_meta_title": "Login",
     "login_view_meta_description": "Manage and catalog home and small libraries online. Simple, quick, easy.",
@@ -29,12 +31,15 @@
     "menu_logout_action": "Logout",
 
     "my_libraries_view_title": "My Libraries",
+    "my_libraries_view_media_added_message": "Your media <b>\"{mediaName}\"</b> has been added to your library.",
 
     "add_media_view_title": "Add a new media",
     "add_media_view_search_placeholder": "Search movie by title",
     "add_media_view_search_results_summary": "{0, plural, =0 {0 result for your research} one {# result found from movies titles } other {# results found from movies titles}}",
 
     "search_media_result_original_title": "Original Title",
+    "search_media_result_add_tooltip": "Add to library",
+    "search_media_result_already_added_tooltip": "Already added into library",
 
     "settings_view_title": "Settings",
     "settings_view_profile_update_title": "Edit Profile",

@@ -13,6 +13,13 @@
     flex-direction: row;
     padding:25px 0;
     border-top: 1px solid $grey_borderColor;
+    position:relative;
+
+    cursor: pointer;
+    
+    &:hover {
+        background-color: $whiteHoverBackground;
+    }
 
     .left {
         width:150px;
@@ -34,6 +41,7 @@
             &.title {
                 font-weight:600;
                 font-size:20px;
+                padding-right:20px;
             }
 
             &.originalTitle {
@@ -56,5 +64,49 @@
                 text-align:justify;
             }
         }
+
+        .rating {
+            margin-top:5px;
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+
+            .ant-rate-star {
+                margin-top:8px;
+            }
+
+            .ratingLabel {
+                display:inline-block;
+                margin-left:10px;
+                line-height:22px;
+                color:darken(#fadb14, 2.5%);
+                font-weight: $boldFontWeight;
+            }
+        }
+    }
+
+    .addButton, .alreadyAdded {
+        background:none;
+        border:none;
+        outline:none;
+        position:absolute;
+        top:10px;
+        right:3px;
+        padding:0 6px;
+        font-size:18px;
+        cursor:pointer;
+
+        color: $mainColor;
+        opacity:0.85;
+
+        &:hover {
+            color: darken($mainColor, $defaultHoverDarkenRatio) !important;
+            opacity:1;
+        }
+    }
+
+    .alreadyAdded, .alreadyAdded:hover {
+        color: $greenColor !important;
+        opacity:1
     }
 }

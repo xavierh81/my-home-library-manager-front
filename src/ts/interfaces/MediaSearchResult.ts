@@ -4,21 +4,26 @@ import moment from "moment";
 
 // Define media search result class
 export class MediaSearchResult {
-    id: number;
     title: string;
-    originalTitle: string;
-    imageUrl?: string | null;
-    releaseDate: moment.Moment;
-    duration?: number | null;
-    summary?: string | null;
+    originalTitle?: string;
+    imageUrl?: string;
+    releaseDate?: moment.Moment;
+    duration?: number;
+    summary?: string;
+    rating?: number;
+
+    searchSource: string;
+    searchSourceMediaId: string;
 
     constructor(apiResult: any) {
-        this.id = apiResult.id
         this.title = apiResult.title
         this.originalTitle = apiResult.originalTitle
         this.imageUrl = apiResult.imageUrl
         this.releaseDate = moment(apiResult.releaseDate, "YYYY-MM-DD")
         this.duration = apiResult.duration
         this.summary = apiResult.summary
+        this.rating = apiResult.rating
+        this.searchSource = apiResult.searchSource
+        this.searchSourceMediaId = apiResult.searchSourceMediaId
     }
 }

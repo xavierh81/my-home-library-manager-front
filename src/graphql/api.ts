@@ -3,13 +3,17 @@ import { ApolloClient, ApolloError, DocumentNode } from '@apollo/client'
 import {
     MUTATION_LOGIN, MUTATION_LOGIN_KEY,
     MUTATION_REGISTER, MUTATION_REGISTER_KEY,
-    MUTATION_UPDATE_USER, MUTATION_UPDATE_USER_KEY
+    MUTATION_UPDATE_USER, MUTATION_UPDATE_USER_KEY,
+    MUTATION_SAVE_MEDIA, MUTATION_SAVE_MEDIA_KEY
 } from './mutations'
 
 import {
     QUERY_GET_USER, QUERY_GET_USER_KEY, 
     QUERY_SEARCH_MEDIAS, QUERY_SEARCH_MEDIAS_KEY
 } from './queries'
+
+// Libraries
+import moment from 'moment'
 
 // Constants
 import { media_types } from 'config/constants'
@@ -117,4 +121,19 @@ export function updateUser(client: ApolloClient<any>, firstName: string, lastNam
         mail,
     }
     return executeMutation(client, MUTATION_UPDATE_USER, MUTATION_UPDATE_USER_KEY, variables)
+}
+
+export function saveMedia(client: ApolloClient<any>, title: string, mediaType: number, searchSource: string, searchSourceMediaId: string, originalTitle?: string, summary?: string, imageUrl?: string, releaseDate?: moment.Moment, rating?: number) : Promise<any> {
+    let variables = {
+        title,
+        originalTitle,
+        summary,
+        imageUrl,
+        releaseDate,
+        rating,
+        mediaType: getEnumKeyByValue(media_types, mediaType),
+        searchSource,
+        searchSourceMediaId
+    }
+    return executeMutation(client, MUTATION_SAVE_MEDIA, MUTATION_SAVE_MEDIA_KEY, variables)
 }

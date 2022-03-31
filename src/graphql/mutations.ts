@@ -1,5 +1,6 @@
 // Imports
 import gql from "graphql-tag";
+import fragments from "./fragments";
 
 // Refresh authentication token if expired
 export const MUTATION_REFRESH_ACCESS_TOKEN_KEY = 'refreshAccessToken'
@@ -71,4 +72,17 @@ export const MUTATION_UPDATE_USER = gql`
             id
         }
     }
+`;
+
+// Save Media
+export const MUTATION_SAVE_MEDIA_KEY = 'saveMedia'
+export const MUTATION_SAVE_MEDIA = gql`
+    mutation saveMedia($title: String!, $originalTitle: String, $summary: String, $imageUrl: String, $releaseDate: Date, $rating: Float, $mediaType: MediaType!, $searchSource: SearchSource!, $searchSourceMediaId: String!) 
+    { 
+        saveMedia(title: $title, originalTitle: $originalTitle, summary: $summary, imageUrl: $imageUrl, releaseDate: $releaseDate, rating: $rating, mediaType: $mediaType, searchSource: $searchSource, searchSourceMediaId: $searchSourceMediaId) 
+        {
+            ...Media
+        }
+    }
+    ${fragments.userMedia}
 `;

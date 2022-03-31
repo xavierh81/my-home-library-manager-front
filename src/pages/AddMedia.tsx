@@ -1,44 +1,78 @@
 // Imports
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { t, Plural } from "@lingui/macro"
 import { useApolloClient } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare} from '@fortawesome/free-solid-svg-icons';
+import { Col, Input, Row, notification } from 'antd';
 
 // Apollo / GraphQL
-import {searchMedias} from 'graphql/api'
+import {getUser,searchMedias,saveMedia} from 'graphql/api'
 
 // Components
 import MainLayout from 'components/templates/MainLayout';
 import SettingsLayout from 'components/templates/SettingsLayout';
 import { MediaSearchResultElement } from 'components/MediaSearchResultElement'
-import { Col, Input, Row } from 'antd';
+import { FullScreenLoader } from 'components/FullscreenLoader';
 
 // Constants
-import { media_types } from 'config/constants'
+import { media_types, Routes } from 'config/constants'
 
 // Types
 import { MediaSearchResult } from 'ts/interfaces/MediaSearchResult';
+
 
 //
 // Core
 //
 
 // Define main state type
-type SettingsState = {
+type AddMediaState = {
+    user: any,
+
     searchText: any,
     searchProcessing: boolean,
     searchResults: MediaSearchResult[] | null,
-    searchError: string | null
+    searchError: string | null,
+
+    addProcessing: boolean
 }
 
 // Main element
 function AddMedia() {
     // Load hooks
     const apolloClient = useApolloClient();
+    const history = useHistory();
 
     // Define state variables
-    const [state, setState] = React.useState<SettingsState>({ searchText: "", searchProcessing: false, searchResults: null, searchError: null });
+    const [state, setState] = React.useState<AddMediaState>({ user: null, searchText: "", searchProcessing: false, searchResults: null, searchError: null, addProcessing: false });
+
+    // Run this at the page mount
+    useEffect(() => {
+        // Retrieve user
+        getUser(apolloClient).then((user) => {
+            setState(prevState => ({ ...prevState, user}))
+        })
+        .catch((error) => {
+
+        })
+    }, [apolloClient])
+
+    //
+    // UI Helpers
+    //
+
+    const isMediaInLibrary = (media: MediaSearchResult) => {
+        if(
+            state.user != null 
+            && state.user.medias.length > 0
+            && state.user.medias.find((m: { searchSource: string; searchSourceMediaId: string; }) => m.searchSource === media.searchSource && m.searchSourceMediaId === media.searchSourceMediaId) != null
+        ) 
+            return true;
+
+        return false
+    }
 
     //
     // UI Actions
@@ -67,9 +101,22 @@ function AddMedia() {
     }
 
     // Action when the user clicks on a search result 
-    const onClickSearchResult = (media: MediaSearchResult) => {
-        console.log("clicked on search result");
-        console.log(media)
+    const onAddMedia = (media: MediaSearchResult) => {
+        setState(prevState => ({ ...prevState, addProcessing: true }))
+
+        // Call the updateUser Mutation
+        saveMedia(apolloClient, media.title, media_types.MOVIE, media.searchSource, media.searchSourceMediaId, media.originalTitle, media.summary, media.imageUrl, media.releaseDate, media.rating).then((result) => {
+            // Redirect to library list
+            history.push(Routes.HOME, {mediaAdded: true, mediaTitle: media.title})
+        })
+        .catch((error) => {
+            setState(prevState => ({ ...prevState, addProcessing: false }))
+
+            notification.error({
+                message: t`global_error_notification_title`,
+                description: error.message,
+            });
+        })
     }
 
     //
@@ -79,7 +126,7 @@ function AddMedia() {
         <MainLayout>
             <SettingsLayout title={t`add_media_view_title`} icon={<FontAwesomeIcon icon={faPlusSquare} />}>
                 <Row>
-                    <Col xs={24} sm={18} md={12}>
+                    <Col xs={24} sm={18} md={14}>
                         <Input.Search size="large" placeholder={t`add_media_view_search_placeholder`} onSearch={onSearch} enterButton loading={state.searchProcessing} />
 
                         {state.searchResults != null && 
@@ -92,15 +139,18 @@ function AddMedia() {
                             <div className="mediasSearchResults">
                                 {state.searchResults.map((media) => {
                                     return (
-                                        <MediaSearchResultElement media={media} onClick={() => onClickSearchResult(media)} />
+                                        <MediaSearchResultElement key={`media_${media.searchSourceMediaId}`} media={media} onAdd={() => onAddMedia(media)} alreadyInLibrary={isMediaInLibrary(media)} />
                                     )
                                 })}
                             </div>
                         }
                     </Col>
                 </Row>
+
+                {state.addProcessing && 
+                    <FullScreenLoader />
+                }
             </SettingsLayout>
-            
         </MainLayout>
     )
 }
